@@ -1,0 +1,13 @@
+<form method="POST">
+    {% csrf_token %}
+    {% if not form.instance.id %}
+   {% include 'save.html' %}
+   {% endif %}
+    {% for i in manage %}
+    {% if form.instance.id == i.id %}
+   {% include 'save.html' %}
+{% else %}
+    <li>{{i.task}}  <button  formnovalidate name="edit" value="{{i.id}}">Edit</button>  <button  formnovalidate name="delete" value="{{i.id}}">Delete</button> </li>
+    {% endif %}
+    {% endfor %}
+</form>
